@@ -1,0 +1,127 @@
+{% extends "editlayout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+    <div class="main-div">
+        <div class="left-div">
+            
+            <div class="left-div-content">
+              <div class="scroll-page">
+                <div class="posts-view">
+                  
+                    {% block profile %}
+                    {% endblock %}
+                    <h4 style="text-align: center; border-bottom: .5px solid #e6ecf0; padding: 10px 15px;">complete your profile </h4><br>
+                    <div class="main-div-content container">
+                        
+
+
+                        <form action="{% url 'edit_pr' profile.id %}" method="post" enctype="multipart/form-data">  
+                         {% csrf_token %}
+            
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                               <label>first name</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ profile.first_name }}" id="first_name" placeholder="first name"  >
+                              </div>
+                              <div class="form-group col-md-6">
+                             <label>last name</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ profile.last_name }}" id="last_name" placeholder="last name"  >
+                              </div>
+                              <div class="form-group col-md-6">
+                             <label>choose gender</label>
+                               <select class="form-control" name="genter" >
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                               </select>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label>choose category</label>
+                                  <select class="form-control" name="category" >
+                                   <option value="student">student</option>
+                                   <option value="teacher">teacher</option>
+                                   <option value="Specialists">Specialists</option>
+                                   <option value="Professionals">Professionals</option>
+                                   <option value="Researchers">Researchers</option>
+                                  </select>
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="username">change user name</label>
+                              <input type="text" class="form-control" name="username" value="{{ profile.username }}" id="username" placeholder="1234 Main St">
+                            </div>
+                            <div class="form-group" >
+                              <label for="email">change mail</label>
+                              <input type="text" class="form-control" name="email" value="{{ profile.email }}" id="email" placeholder="">
+                            </div >
+
+                            
+                              <div class="form-group">
+                                <div class="">
+                                  <label class="" for="profile"><span style="color: #6c757d;">choose profile picture<span></label>
+                                  <input type="file" name="profile" class="form-control " name="profile"  id="profile" accept="image/jpeg,image/png,image/webp,image/gif">
+                        
+                                  <span class="star small"></span>
+                              </div>
+                              </div>
+                              <div class="form-group">
+                                <div>
+                                  <label class="" for="cover"><span style="color: #6c757d;">choose cover picture<span></label>
+                                  <input type="file" name="cover" class="form-control" name="cover" id="cover"   >
+                                  
+                                  <span class="star small"></span>
+                              </div>
+                              </div>
+                              <div class="form-group">
+                                <div>
+                                  <label class="" for="password"><span style="color: #6c757d;">password<span></label>
+                                  <input type="password" name="password" class="form-control"  id="password"   >
+                                  
+                                  <span class="star small"></span>
+                              </div>
+                              </div>
+                              
+                            <div class="form-group">
+                              <label for="website_link">website link</label>
+                              <input type="url" class="form-control" id="website_link" name="website_link" value="{{ user.website_link }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="facebook_link">facebook link</label>
+                              <input type="url" class="form-control" id="facebook_link" name="facebook_link" value="{{ user.facebook_link }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="linkedin_link">linkedIn link</label>
+                              <input type="url" class="form-control" id="linkedin_link" name="linkedin_link" value="{{ user.linkedin_link }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="twitter_link">twitter link</label>
+                              <input type="url" class="form-control" id="twitter_link" name="twitter_link" value="{{ user.twitter_link }}">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="twitter_link">you tube link</label>
+                              <input type="url" class="form-control" id="you_link" name="you_link" value="{{ user.you_link }}">
+                            </div>
+                                 
+                            <button type="submit" class="btn btn-primary">save Changes</button>
+
+
+                          </form>
+
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+{% endblock %}
